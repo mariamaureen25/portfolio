@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Data Scientist / Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF8;
+    --paper-2:#F3F1EB;
+    --ink:#1B1E1F;
+    --ink-soft:#5B615F;
+    --line:#E3E1DA;
+    --signal:#3E5C76;
+    --signal-soft:#DCE5EC;
+    --gold:#B98B3E;
+    --radius:2px;
+    --maxw:1040px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:450;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,250,248,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:60px;
+  }
+  .brand{
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px; font-weight:500;
+    text-decoration:none;
+    display:flex; align-items:center; gap:8px;
+  }
+  .brand .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--gold);
+    display:inline-block;
+  }
+  .navlinks{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
+  .navlinks a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    text-decoration:none;
+    color:var(--ink-soft);
+    padding:4px 2px;
+    border-bottom:1px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .navlinks a:hover, .navlinks a:focus-visible{
+    color:var(--ink);
+    border-color:var(--signal);
+  }
+  .navtoggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 72px;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5vw, 58px);
+    line-height:1.05;
+    margin-top:14px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--signal);
+  }
+  .hero p.lede{
+    margin-top:20px;
+    max-width:46ch;
+    color:var(--ink-soft);
+    font-size:17px;
+  }
+  .hero-actions{
+    margin-top:32px;
+    display:flex; gap:14px; flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    text-decoration:none;
+    padding:11px 18px;
+    border-radius:var(--radius);
+    display:inline-block;
+    transition:transform .15s ease, background .15s ease, border-color .15s ease;
+    border:1px solid var(--ink);
+  }
+  .btn-solid{background:var(--ink); color:var(--paper);}
+  .btn-solid:hover{transform:translateY(-1px); background:var(--signal); border-color:var(--signal);}
+  .btn-ghost{background:transparent; color:var(--ink); border-color:var(--line);}
+  .btn-ghost:hover{border-color:var(--ink); transform:translateY(-1px);}
+
+  /* schema card — signature element */
+  .schema{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+  }
+  .schema-head{
+    display:flex; align-items:center; gap:8px;
+    padding:11px 16px;
+    border-bottom:1px solid var(--line);
+    color:var(--ink-soft);
+  }
+  .schema-head .dots{display:flex; gap:5px;}
+  .schema-head .dots span{width:7px;height:7px;border-radius:50%;background:var(--line);}
+  .schema-body{padding:6px 0;}
+  .schema-row{
+    display:grid;
+    grid-template-columns:96px 88px 1fr;
+    gap:10px;
+    padding:8px 16px;
+    border-bottom:1px dashed var(--line);
+    align-items:baseline;
+  }
+  .schema-row:last-child{border-bottom:none;}
+  .schema-field{color:var(--signal); font-weight:500;}
+  .schema-type{color:var(--gold); font-size:11.5px;}
+  .schema-val{color:var(--ink); word-break:break-word;}
+  .schema-val .tag{
+    display:inline-block;
+    background:var(--signal-soft);
+    color:var(--signal);
+    padding:1px 6px;
+    border-radius:3px;
+    margin:1px 3px 1px 0;
+    font-size:11.5px;
+  }
+
+  /* ---------- SECTION shell ---------- */
+  section{padding:64px 0;}
+  section.bordered{border-top:1px solid var(--line);}
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:36px; flex-wrap:wrap; gap:10px;
+  }
+  .section-head h2{font-size:28px;}
+  .section-head .eyebrow{margin-bottom:6px; display:block;}
+
+  /* reveal on scroll */
+  .reveal{
+    opacity:0; transform:translateY(14px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:2fr 1fr; gap:48px;
+  }
+  .about-grid p{color:var(--ink-soft); max-width:62ch;}
+  .stat-list{
+    display:flex; flex-direction:column; gap:18px;
+    border-left:1px solid var(--line);
+    padding-left:20px;
+  }
+  .stat-list .num{
+    font-family:'Fraunces', serif; font-size:26px; color:var(--ink);
+  }
+  .stat-list .label{
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--ink-soft);
+    text-transform:uppercase; letter-spacing:.06em;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects{
+    display:grid; grid-template-columns:1fr; gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .project{
+    background:var(--paper);
+    padding:28px 26px;
+    display:grid;
+    grid-template-columns:1.4fr 1.6fr auto;
+    gap:24px;
+    align-items:center;
+    transition:background .15s ease;
+  }
+  .project:hover{background:var(--paper-2);}
+  .project h3{font-size:21px; font-weight:450;}
+  .project .p-desc{color:var(--ink-soft); font-size:14.5px; margin-top:6px; max-width:52ch;}
+  .project .p-tags{margin-top:10px; display:flex; flex-wrap:wrap; gap:6px;}
+  .project .p-tags span{
+    font-family:'JetBrains Mono', monospace; font-size:11px;
+    background:var(--signal-soft); color:var(--signal);
+    padding:2px 7px; border-radius:3px;
+  }
+  .project .p-metric{
+    text-align:right; font-family:'JetBrains Mono', monospace;
+  }
+  .project .p-metric .m-num{
+    font-family:'Fraunces', serif; font-size:30px; color:var(--gold); display:block;
+  }
+  .project .p-metric .m-label{font-size:11px; color:var(--ink-soft);}
+  .project a.p-link{
+    grid-column:1/3;
+    font-family:'JetBrains Mono', monospace; font-size:12.5px;
+    color:var(--signal); text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .project a.p-link:hover{border-color:var(--signal);}
+
+  /* ---------- EXPERIENCE ---------- */
+  .timeline{display:flex; flex-direction:column;}
+  .trow{
+    display:grid; grid-template-columns:150px 1fr; gap:24px;
+    padding:22px 0; border-top:1px solid var(--line);
+  }
+  .trow:last-child{border-bottom:1px solid var(--line);}
+  .trow .t-date{font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--ink-soft); padding-top:3px;}
+  .trow h3{font-size:18px; font-weight:500; font-family:'Inter',sans-serif;}
+  .trow .t-role{color:var(--signal); font-size:14px; font-weight:500;}
+  .trow p{color:var(--ink-soft); font-size:14.5px; margin:8px 0 0; max-width:58ch;}
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:28px;
+  }
+  .skill-cat .eyebrow{margin-bottom:12px; display:block;}
+  .skill-cat ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+  .skill-cat li{
+    font-size:14.5px;
+    padding-bottom:8px; border-bottom:1px solid var(--line);
+  }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:56px 0 40px;
+  }
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;
+  }
+  footer h2{font-size:34px; max-width:14ch;}
+  .footer-links{display:flex; gap:20px; flex-wrap:wrap;}
+  .footer-links a{
+    font-family:'JetBrains Mono', monospace; font-size:13px;
+    text-decoration:none; color:var(--ink-soft);
+    border-bottom:1px solid var(--line);
+    padding-bottom:2px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .footer-links a:hover, .footer-links a:focus-visible{color:var(--signal); border-color:var(--signal);}
+  .fine{margin-top:44px; color:var(--ink-soft); font-size:12px; font-family:'JetBrains Mono', monospace;}
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--signal); outline-offset:2px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .hero{grid-template-columns:1fr; padding-top:48px;}
+    .about-grid{grid-template-columns:1fr;}
+    .stat-list{flex-direction:row; border-left:none; padding-left:0; border-top:1px solid var(--line); padding-top:18px; flex-wrap:wrap;}
+    .project{grid-template-columns:1fr; text-align:left;}
+    .project .p-metric{text-align:left;}
+    .project a.p-link{grid-column:1/1;}
+    .skills-grid{grid-template-columns:repeat(2, 1fr);}
+    .navlinks{
+      position:fixed; top:60px; right:0; left:0;
+      background:var(--paper); border-bottom:1px solid var(--line);
+      flex-direction:column; padding:16px 28px; gap:14px;
+      transform:translateY(-8px); opacity:0; pointer-events:none;
+      transition:transform .15s ease, opacity .15s ease;
+    }
+    .navlinks.open{transform:translateY(0); opacity:1; pointer-events:auto;}
+    .navtoggle{
+      display:block; background:none; border:1px solid var(--line);
+      border-radius:3px; padding:6px 10px; font-family:'JetBrains Mono', monospace;
+      font-size:12px; cursor:pointer; color:var(--ink);
+    }
+  }
+  @media (max-width: 560px){
+    .skills-grid{grid-template-columns:1fr 1fr;}
+    footer h2{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand"><span class="dot"></span>[your.name]</a>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="navtoggle" id="navtoggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div>
+      <span class="eyebrow">Data Scientist &amp; Analytics Engineer</span>
+      <h1>I turn messy data<br>into decisions <em>people trust.</em></h1>
+      <p class="lede">[Your Name] — I build pipelines, models, and dashboards that hold up in production, not just in notebooks. Based in [Your City], open to [contract / full-time] work.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-solid">See the work</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="schema reveal">
+      <div class="schema-head">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <span>profile.sql</span>
+      </div>
+      <div class="schema-body">
+        <div class="schema-row">
+          <span class="schema-field">name</span>
+          <span class="schema-type">varchar</span>
+          <span class="schema-val">"[Your Name]"</span>
+        </div>
+        <div class="schema-row">
+          <span class="schema-field">role</span>
+          <span class="schema-type">varchar</span>
+          <span class="schema-val">"Data Scientist / Analytics Eng."</span>
+        </div>
+        <div class="schema-row">
+          <span class="schema-field">stack</span>
+          <span class="schema-type">array</span>
+          <span class="schema-val">
+            <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">dbt</span><span class="tag">Airflow</span>
+          </span>
+        </div>
+        <div class="schema-row">
+          <span class="schema-field">focus</span>
+          <span class="schema-type">array</span>
+          <span class="schema-val"><span class="tag">ML</span><span class="tag">Pipelines</span><span class="tag">Dashboards</span></span>
+        </div>
+        <div class="schema-row">
+          <span class="schema-field">status</span>
+          <span class="schema-type">enum</span>
+          <span class="schema-val">'open_to_work'</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="bordered">
+    <div class="wrap about-grid reveal">
+      <div>
+        <span class="eyebrow">About</span>
+        <h2 style="margin-top:8px; font-size:26px;">Somewhere between the database and the boardroom.</h2>
+        <p>[Two or three sentences about your background — where you've worked, what kind of problems you like solving, and what makes your approach to data different. Mention the tools you reach for daily and the type of teams you work best with.]</p>
+      </div>
+      <div class="stat-list">
+        <div><span class="num">[X]+</span><div class="label">Years in data</div></div>
+        <div><span class="num">[X]</span><div class="label">Pipelines shipped</div></div>
+        <div><span class="num">[X]</span><div class="label">Models in production</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="bordered" id="work">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Selected work</span>
+          <h2>Projects</h2>
+        </div>
+      </div>
+
+      <div class="projects reveal">
+        <div class="project">
+          <div>
+            <h3>[Employee Workforce Dashboard]</h3>
+            <p class="p-desc">[Developed an interactive dashboard using Tableau and Power BI]</p>
+            <div class="p-tags"><span>Python</span><span>XGBoost</span><span>Airflow</span></div>
+            <a href="#" class="p-link">View writeup →</a>
+          </div>
+          <div></div>
+          <div class="p-metric">
+            <span class="m-num">+18%</span>
+            <span class="m-label">retention lift</span>
+          </div>
+        </div>
+
+        <div class="project">
+          <div>
+            <h3>[Revenue Data Warehouse]</h3>
+            <p class="p-desc">[Designed and modeled a dbt-based warehouse consolidating five source systems into a single source of truth.]</p>
+            <div class="p-tags"><span>dbt</span><span>Snowflake</span><span>SQL</span></div>
+            <a href="#" class="p-link">View writeup →</a>
+          </div>
+          <div></div>
+          <div class="p-metric">
+            <span class="m-num">6hr → 12min</span>
+            <span class="m-label">refresh time</span>
+          </div>
+        </div>
+
+        <div class="project">
+          <div>
+            <h3>[Ops Dashboard Suite]</h3>
+            <p class="p-desc">[Shipped a set of live operational dashboards used daily by three regional teams.]</p>
+            <div class="p-tags"><span>Looker</span><span>BigQuery</span><span>Python</span></div>
+            <a href="#" class="p-link">View writeup →</a>
+          </div>
+          <div></div>
+          <div class="p-metric">
+            <span class="m-num">40+</span>
+            <span class="m-label">daily active users</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="bordered" id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Career</span>
+          <h2>Experience</h2>
+        </div>
+      </div>
+      <div class="timeline reveal">
+        <div class="trow">
+          <div class="t-date">[2023 — Now]</div>
+          <div>
+            <h3>[Company Name]</h3>
+            <div class="t-role">[Senior Data Scientist]</div>
+            <p>[What you owned, what shipped, and the impact — one to two sentences.]</p>
+          </div>
+        </div>
+        <div class="trow">
+          <div class="t-date">[2021 — 2023]</div>
+          <div>
+            <h3>[Company Name]</h3>
+            <div class="t-role">[Data Engineer]</div>
+            <p>[What you owned, what shipped, and the impact — one to two sentences.]</p>
+          </div>
+        </div>
+        <div class="trow">
+          <div class="t-date">[2019 — 2021]</div>
+          <div>
+            <h3>[Company Name]</h3>
+            <div class="t-role">[Data Analyst]</div>
+            <p>[What you owned, what shipped, and the impact — one to two sentences.]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="bordered" id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Toolbox</span>
+          <h2>Skills</h2>
+        </div>
+      </div>
+      <div class="skills-grid reveal">
+        <div class="skill-cat">
+          <span class="eyebrow">Languages</span>
+          <ul><li>Python</li><li>SQL</li><li>R</li><li>Bash</li></ul>
+        </div>
+        <div class="skill-cat">
+          <span class="eyebrow">Data &amp; ML</span>
+          <ul><li>pandas / numpy</li><li>scikit-learn</li><li>PyTorch</li><li>XGBoost</li></ul>
+        </div>
+        <div class="skill-cat">
+          <span class="eyebrow">Infra</span>
+          <ul><li>Airflow</li><li>dbt</li><li>Docker</li><li>Spark</li></ul>
+        </div>
+        <div class="skill-cat">
+          <span class="eyebrow">Platforms</span>
+          <ul><li>BigQuery</li><li>Snowflake</li><li>AWS</li><li>Looker / Tableau</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-inner reveal">
+      <h2>Let's work with your data.</h2>
+      <div class="footer-links">
+        <a href="mailto:you@example.com">you@example.com</a>
+        <a href="#">GitHub</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Resume (PDF)</a>
+      </div>
+    </div>
+    <div class="fine">© <span id="year"></span> [Your Name]. Built with plain HTML, no frameworks.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // mobile nav toggle
+  const toggle = document.getElementById('navtoggle');
+  const links = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
