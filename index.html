@@ -223,11 +223,12 @@
     background:var(--paper);
     padding:28px 26px;
     display:grid;
-    grid-template-columns:1.4fr 1.6fr auto;
+    grid-template-columns:1fr auto;
     gap:24px;
     align-items:center;
     transition:background .15s ease;
   }
+  .project.no-metric{grid-template-columns:1fr;}
   .project:hover{
     background:var(--paper-2);
   }
@@ -335,12 +336,12 @@
 
 <header>
   <nav class="wrap">
-    <a href="#top" class="brand"><span class="dot"></span>[your.name]</a>
+    <a href="#top" class="brand"><span class="dot"></span>maria.linggar</a>
     <ul class="navlinks" id="navlinks">
-      <li><a href="#work">ACADEMIC</a></li>
+      <li><a href="#work">PROJECTS</a></li>
       <li><a href="#experience">EXPERIENCE</a></li>
       <li><a href="#skills">SKILLS</a></li>
-      <li><a href="#contact">PROJECTS</a></li>
+      <li><a href="#contact">CONTACT</a></li>
     </ul>
     <button class="navtoggle" id="navtoggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
   </nav>
@@ -351,9 +352,9 @@
   <!-- HERO -->
   <section class="hero wrap">
     <div>
-      <span class="eyebrow">I am a third year undergraduate student &amp; Analytics Engineer</span>
+      <span class="eyebrow">Third-year undergraduate &amp; aspiring analytics engineer</span>
       <h1>I turn messy data<br>into decisions <em>people trust.</em></h1>
-      <p class="lede">[Your Name] — I build pipelines, models, and dashboards that hold up in production, not just in notebooks. Based in [Your City], open to [contract / full-time] work.</p>
+      <p class="lede">Maria Maureen Linggar — I build dashboards, pipelines, and models on real datasets, from raw CSVs to KPIs a team can act on. Based in [Your City], open to internships and analytics roles.</p>
       <div class="hero-actions">
         <a href="#work" class="btn btn-solid">See the work</a>
         <a href="#contact" class="btn btn-ghost">Get in touch</a>
@@ -369,12 +370,12 @@
         <div class="schema-row">
           <span class="schema-field">name</span>
           <span class="schema-type">varchar</span>
-          <span class="schema-val">"[Your Name]"</span>
+          <span class="schema-val">"Maria Maureen Linggar"</span>
         </div>
         <div class="schema-row">
           <span class="schema-field">role</span>
           <span class="schema-type">varchar</span>
-          <span class="schema-val">"Data Scientist / Analytics Eng."</span>
+          <span class="schema-val">"Data / Analytics Student"</span>
         </div>
         <div class="schema-row">
           <span class="schema-field">stack</span>
@@ -402,13 +403,13 @@
     <div class="wrap about-grid reveal">
       <div>
         <span class="eyebrow">About</span>
-        <h2 style="margin-top:8px; font-size:26px;">Somewhere between the database and the boardroom.</h2>
-        <p>[Two or three sentences about your background — where you've worked, what kind of problems you like solving, and what makes your approach to data different. Mention the tools you reach for daily and the type of teams you work best with.]</p>
+        <h2 style="margin-top:8px; font-size:26px;">Somewhere between the dataset and the decision.</h2>
+        <p>[Two or three sentences about your background — what you're studying, what kind of problems you like solving, and what makes your approach to data different. Mention the tools you reach for daily and the type of teams you work best with.]</p>
       </div>
       <div class="stat-list">
-        <div><span class="num">[X]+</span><div class="label">Years in data</div></div>
-        <div><span class="num">[X]</span><div class="label">Pipelines shipped</div></div>
-        <div><span class="num">[X]</span><div class="label">Models in production</div></div>
+        <div><span class="num">4</span><div class="label">Team projects shipped</div></div>
+        <div><span class="num">[X]</span><div class="label">Dashboards built</div></div>
+        <div><span class="num">[X]</span><div class="label">ML models trained</div></div>
       </div>
     </div>
   </section>
@@ -424,7 +425,7 @@
       </div>
 
       <div class="projects reveal">
-        <div class="project">
+        <div class="project no-metric">
           <div>
             <h3>EMPLOYEE WORKFORCE DASHBOARD</h3>
             <p class="p-desc">Worked with Daniel Satrio Pamungkas, Deken Febriano Putra, Joshua Emmanuel Jonathan, and Joan Christina Bahagiono</p>
@@ -434,14 +435,9 @@
             <div class="p-tags"><span>Python</span><span>Tableau</span><span>Airflow</span></div>
             <a href="#" class="p-link">View writeup →</a>
           </div>
-          <div></div>
-          <div class="p-metric">
-            <span class="m-num"></span>
-            <span class="m-label"></span>
-          </div>
         </div>
 
-        <div class="project">
+        <div class="project no-metric">
           <div>
             <h3>AMAZON SALES ANALYSIS AND ORDER STATUS PREDICTION</h3>
             <p class="p-desc">Worked with Daniel Satrio Pamungkas, Deken Febriano Putra, and Eko Setyo Purwanto</p>
@@ -450,11 +446,6 @@
             <div class="p-tags"><span>dbt</span><span>Snowflake</span><span>SQL</span></div>
             <a href="#" class="p-link">View writeup →</a>
           </div>
-          <div></div> 
-          <div class="p-metric">
-            <span class="m-num"></span>
-            <span class="m-label"></span>
-          </div>
         </div>
 
         <div class="project">
@@ -462,18 +453,17 @@
             <h3>DEEP LEARNING-BASED RETAIL DEMAND FORECASTING</h3>
             <p class="p-desc">Worked with Joshua Emmanuel Jonathan, Deken Febriano Putra, Azani Cempaka Sari, and Nicholaus Hendrik Jeremy</p>
             <p class="p-desc">Preprocessed M5 Forecasting dataset by data restructuring, data integration, label encoding, train/test split, and data scaling</p>
-            <p class="p-desc">[Shipped a set of live operational dashboards used daily by three regional teams.]</p>
+            <p class="p-desc">Trained deep learning models to forecast retail demand and evaluated them against baseline methods</p>
             <div class="p-tags"><span>Looker</span><span>BigQuery</span><span>Python</span></div>
             <a href="#" class="p-link">View writeup →</a>
           </div>
-          <div></div>
           <div class="p-metric">
             <span class="m-num">40+</span>
             <span class="m-label">daily active users</span>
           </div>
         </div>
 
-        <div class="project">
+        <div class="project no-metric">
           <div>
             <h3>NETFLIX SHOWS ANALYSIS AND CONTENT TYPE PREDICTION</h3>
             <p class="p-desc">Worked with A. F. Tioputri, Daniel Satrio Pamungkas, Deken Febriano Putra, and Eko Setyo Purwanto</p>
@@ -481,11 +471,6 @@
             <p class="p-desc">Developed and evaluated Random Forest, Logistic Regression, and Decision Tree models for content type prediction</p>
             <div class="p-tags"><span>dbt</span><span>Snowflake</span><span>SQL</span></div>
             <a href="#" class="p-link">View writeup →</a>
-          </div>
-          <div></div> 
-          <div class="p-metric">
-            <span class="m-num"></span>
-            <span class="m-label"></span>
           </div>
         </div>
       </div>
@@ -573,7 +558,7 @@
         <a href="#">Resume (PDF)</a>
       </div>
     </div>
-    <div class="fine">© <span id="year"></span> [MARIA MAUREEN LINGGAR]. Built with plain HTML, no frameworks.</div>
+    <div class="fine">© <span id="year"></span> Maria Maureen Linggar. Built with plain HTML, no frameworks.</div>
   </div>
 </footer>
 
