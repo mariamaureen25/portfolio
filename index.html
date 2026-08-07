@@ -247,13 +247,25 @@
     font-family:'Fraunces', serif; font-size:30px; color:var(--gold); display:block;
   }
   .project .p-metric .m-label{font-size:11px; color:var(--ink-soft);}
-  .project a.p-link{
+  .project .p-links{
     grid-column:1/3;
+    display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+    margin-top:4px;
+  }
+  .project a.p-link{
     font-family:'JetBrains Mono', monospace; font-size:12.5px;
     color:var(--signal); text-decoration:none;
     border-bottom:1px solid transparent;
   }
   .project a.p-link:hover{border-color:var(--signal);}
+  .project a.p-download{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px;
+    color:var(--gold); text-decoration:none;
+    border-bottom:1px solid transparent;
+    display:inline-flex; align-items:center; gap:5px;
+  }
+  .project a.p-download:hover{border-color:var(--gold);}
+  .project a.p-download svg{width:12px; height:12px; flex:none;}
 
   /* ---------- EXPERIENCE ---------- */
   .timeline{display:flex; flex-direction:column;}
@@ -310,7 +322,7 @@
     .stat-list{flex-direction:row; border-left:none; padding-left:0; border-top:1px solid var(--line); padding-top:18px; flex-wrap:wrap;}
     .project{grid-template-columns:1fr; text-align:left;}
     .project .p-metric{text-align:left;}
-    .project a.p-link{grid-column:1/1;}
+    .project .p-links{grid-column:1/1;}
     .skills-grid{grid-template-columns:repeat(2, 1fr);}
     .navlinks{
       position:fixed; top:60px; right:0; left:0;
@@ -425,6 +437,7 @@
       </div>
 
       <div class="projects reveal">
+
         <div class="project no-metric">
           <div>
             <h3>EMPLOYEE WORKFORCE DASHBOARD</h3>
@@ -433,7 +446,13 @@
             <p class="p-desc">Developed an interactive dashboard using Tableau and Power BI</p>
             <p class="p-desc">Conducted exploratory data analysis and identified key insights</p>
             <div class="p-tags"><span>Python</span><span>Tableau</span><span>Airflow</span></div>
-            <a href="#" class="p-link">View writeup →</a>
+            <div class="p-links">
+              <a href="#" class="p-link">View writeup →</a>
+              <a href="images/tableau-employee-workforce-dashboard.png" download class="p-download">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+                Download Tableau image
+              </a>
+            </div>
           </div>
         </div>
 
@@ -444,7 +463,13 @@
             <p class="p-desc">Preprocessed the Amazon sales dataset by handling missing values, correcting data types, and conducting feature engineering</p>
             <p class="p-desc">Developed an interactive amazon sales dashboard using Tableau and Power BI with KPIs, filters, and visualizations</p>
             <div class="p-tags"><span>dbt</span><span>Snowflake</span><span>SQL</span></div>
-            <a href="#" class="p-link">View writeup →</a>
+            <div class="p-links">
+              <a href="#" class="p-link">View writeup →</a>
+              <a href="images/tableau-amazon-sales-analysis.png" download class="p-download">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+                Download Tableau image
+              </a>
+            </div>
           </div>
         </div>
 
@@ -455,7 +480,13 @@
             <p class="p-desc">Preprocessed M5 Forecasting dataset by data restructuring, data integration, label encoding, train/test split, and data scaling</p>
             <p class="p-desc">Trained deep learning models to forecast retail demand and evaluated them against baseline methods</p>
             <div class="p-tags"><span>Looker</span><span>BigQuery</span><span>Python</span></div>
-            <a href="#" class="p-link">View writeup →</a>
+            <div class="p-links">
+              <a href="#" class="p-link">View writeup →</a>
+              <a href="images/tableau-retail-demand-forecasting.png" download class="p-download">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+                Download Tableau image
+              </a>
+            </div>
           </div>
         </div>
 
@@ -466,10 +497,16 @@
             <p class="p-desc">Developed an interactive netflix shows dashboard using Tableau and Power BI with KPIs, filters, and visualizations</p>
             <p class="p-desc">Developed and evaluated Random Forest, Logistic Regression, and Decision Tree models for content type prediction</p>
             <div class="p-tags"><span>dbt</span><span>Snowflake</span><span>SQL</span></div>
-            <a href="#" class="p-link">View writeup →</a>
+            <div class="p-links">
+              <a href="#" class="p-link">View writeup →</a>
+              <a href="images/tableau-netflix-shows-analysis.png" download class="p-download">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+                Download Tableau image
+              </a>
+            </div>
           </div>
         </div>
-        
+
         <div class="project no-metric">
           <div>
             <h3>LENDING CLUB LOAN RISK ANALYSIS</h3>
@@ -477,7 +514,13 @@
             <p class="p-desc">Developed an interactive netflix shows dashboard using Tableau and Power BI with KPIs, filters, and visualizations</p>
             <p class="p-desc">Developed and evaluated an Agglomerative Hierarchical Clustering model</p>
             <div class="p-tags"><span>dbt</span><span>Snowflake</span><span>SQL</span></div>
-            <a href="#" class="p-link">View writeup →</a>
+            <div class="p-links">
+              <a href="#" class="p-link">View writeup →</a>
+              <a href="images/tableau-lending-club-loan-risk.png" download class="p-download">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+                Download Tableau image
+              </a>
+            </div>
           </div>
         </div>
 
@@ -489,21 +532,34 @@
             <p class="p-desc">Developed an interactive netflix shows dashboard using Tableau and Power BI with KPIs, filters, and visualizations</p>
             <p class="p-desc">Developed and evaluated Random Forest model for airline passenger satisfaction prediction</p>
             <div class="p-tags"><span>dbt</span><span>Snowflake</span><span>SQL</span></div>
-            <a href="#" class="p-link">View writeup →</a>
+            <div class="p-links">
+              <a href="#" class="p-link">View writeup →</a>
+              <a href="images/tableau-airline-passenger-satisfaction.png" download class="p-download">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+                Download Tableau image
+              </a>
+            </div>
           </div>
-        </div>        
-        
+        </div>
+
         <div class="project no-metric">
           <div>
-            <h3>A-COMMERCE DATA WAREHOUSE AND ETL PIPELINE</h3></h3>
+            <h3>A-COMMERCE DATA WAREHOUSE AND ETL PIPELINE</h3>
             <p class="p-desc">Built a Star Schema data warehouse with fact and dimension tables to support business intelligence</p>
             <p class="p-desc">Developed an ETL pipeline featuring data cleansing, duplicating removal, data standardization, and integrity validation</p>
             <p class="p-desc">Implemented CDC, incremental loading, and Slowly Changing Dimensions</p>
             <p class="p-desc">Developed an interactive dashboard using Tableau and Power BI with KPIs, filters, and visualizations</p>
             <div class="p-tags"><span>dbt</span><span>Snowflake</span><span>SQL</span></div>
-            <a href="#" class="p-link">View writeup →</a>
+            <div class="p-links">
+              <a href="#" class="p-link">View writeup →</a>
+              <a href="images/tableau-ecommerce-data-warehouse.png" download class="p-download">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+                Download Tableau image
+              </a>
+            </div>
           </div>
-        </div>        
+        </div>
+
       </div>
     </div>
   </section>
